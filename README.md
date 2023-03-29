@@ -1,4 +1,4 @@
 # Marble-Surface-Anomaly-Detection-Model
-This is a Computer Vision task that uses a Keras model to detect tiles with surface anomaly such as crack, dot, joint or good.   
+This is a Computer Vision task that uses a CNN model to detect tiles with surface anomaly such as crack, dot, joint or good.   
 # Dataset
 The dataset is from Kaggle https://www.kaggle.com/datasets/wardaddy24/marble-surface-anomaly-detection-2 and has two folders train and test. In train and test folders there are 4 classes namely: crack, dot, good and joint. There are a total of 2249 files in the train folder and 688 files in the test folder. The images are 256 x 256 in dimension. The images are cropped from the original dataset https://www.kaggle.com/datasets/wardaddy24/marble-surface-anomaly-detection. There is no overlapping among the cropped images and the aspect ratio is maintained while generating the crops. Due to less availability of the crack, dot and joint classes images, they are augmented using a script. The augmentation is no loss type only the brightness changes and flipping(both horizontal and vertical) of images is done.
