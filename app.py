@@ -5,7 +5,7 @@ from tensorflow import keras
 from tensorflow.keras.preprocessing import image
 
 # Load the model
-def load_model()
+def load_model():
     model=('model_surface_model_2.json')
     return model
 
