@@ -5,7 +5,10 @@ from tensorflow import keras
 from tensorflow.keras.preprocessing import image
 
 # Load the model
-model = tf.keras.models.load_model('model_surface_model_2.json')
+model.load_model('model_surface_model_2.json')
+
+#Caching the model for faster loading
+@st.cache
 
 def predict(image):
     img = keras.preprocessing.image.load_img(image, target_size=(224, 224))
