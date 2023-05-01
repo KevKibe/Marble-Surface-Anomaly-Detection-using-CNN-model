@@ -3,8 +3,8 @@ import numpy as np
 from tensorflow.keras.preprocessing import image
 
 # Load the model
-model = load_model(' ')
-
+model = load_model('model_surface_model_2.json')
+@st.cache
 # Define the image size and target labels
 img_width, img_height = 224, 224
 labels = {0: 'Defective', 1: 'Good'}
