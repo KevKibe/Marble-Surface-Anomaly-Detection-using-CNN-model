@@ -22,8 +22,6 @@ def predict(image):
 
 st.title("Marble Surface Anomaly Detection")
 # Create a file uploader widget in Streamlit
-uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
-st.title("Marble Surface Classification")
 st.write("Upload an image of a marble surface")
 image = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 if image is not None:
