@@ -17,7 +17,7 @@ from googleapiclient.errors import HttpError
 @st.cache(show_spinner=False)
 def load_model_from_drive():
     # Authenticate and authorize the Google Drive API credentials
-    creds = Credentials.from_authorized_user_file('peerless-dahlia-385616-ba2dd85ba63a.json', ['https://www.googleapis.com/auth/drive'])
+    creds = Credentials.from_authorized_user_file('client_secret_319221524567-811a8cv6h4reiu4umgd8c3j7jno4im08.apps.googleusercontent.com.json', ['https://www.googleapis.com/auth/drive'])
 
     # Create a connection to your Google Drive account using the authenticated credentials
     service = build('drive', 'v3', credentials=creds)
