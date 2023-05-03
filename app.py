@@ -3,35 +3,37 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.preprocessing import image
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+from googleapiclient.http import MediaIoBaseDownload
+from keras.models import load_model
 
+import pickle
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
-@st.cache(allow_output_mutation=True)
+@st.cache(show_spinner=False)
 def load_model_from_drive():
-    # Authenticate with Google Drive
-    creds = Credentials.from_authorized_user_info(info={
-        'client_id': '1049584246300-rrf03rf4hc4143o6iml77kbg1q37si8a.apps.googleusercontent.com',
-        'client_secret': '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',
-        
-    })
+    # Authenticate and authorize the Google Drive API credentials
+    creds = Credentials.from_authorized_user_file('/path/to/credentials.json', ['https://www.googleapis.com/auth/drive'])
+
+    # Create a connection to your Google Drive account using the authenticated credentials
     service = build('drive', 'v3', credentials=creds)
 
-    # Download the model file from Google Drive
-    file_id = 'marble_surface_model_final_1.h5'
+    # Fetch the model file from the Google Drive
+    file_id = 'your_file_id'
     request = service.files().get_media(fileId=file_id)
-    fh = io.BytesIO()
-    downloader = MediaIoBaseDownload(fh, request)
-    done = False
-    while done is False:
-        status, done = downloader.next_chunk()
-        print(f'Download {int(status.progress() * 100)}.')
-    fh.seek(0)
+    file = request.execute()
 
-    # Load the model from the downloaded file
-    model = load_model(fh)
+    # Load the model from the fetched file using pickle
+    model = pickle.loads(file)
+
     return model
 
-# Load the model from Google Drive and cache it using st.cache
-model = load_model_from_drive()    
+# Load the model using the cached function
+model = load_model_from_drive()  
     
     
     
