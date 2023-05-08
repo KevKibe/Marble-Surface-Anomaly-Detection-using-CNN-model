@@ -14,11 +14,15 @@ from googleapiclient.errors import HttpError
 
 import urllib.request
 
-url = 'https://github.com/KevKibe/Marble-Surface-Anomaly-Detection-using-CNN-model/releases/download/model01/marble_surface_model_final_1.h5'
-filename = url.split('/')[-1]
+@st.cache
+def load_model():
+    url = 'https://github.com/KevKibe/Marble-Surface-Anomaly-Detection-using-CNN-model/releases/download/model01/marble_surface_model_final_1.h5'
+    filename = url.split('/')[-1]
+    urllib.request.urlretrieve(url, filename)
+    model = keras.models.load_model(filename)
+    return model
 
-urllib.request.urlretrieve(url, filename)
-model = keras.models.load_model('marble_surface_model_final_1.h5')    
+model = load_model()   
     
     
 def predict(image):
