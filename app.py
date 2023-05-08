@@ -15,7 +15,7 @@ from googleapiclient.errors import HttpError
 #@st.cache_resource
 def load_model_from_drive():
     # Replace these variables with your own values
-    SERVICE_ACCOUNT_FILE = 'peerless-dahlia-385616-867972ed865b.json'
+    SERVICE_ACCOUNT_FILE = 'peerless-dahlia-385616-ba2dd85ba63a.json'
     FILE_ID = 'marble_surface_model_final_1.h5'
 
     # Authenticate with the service account
