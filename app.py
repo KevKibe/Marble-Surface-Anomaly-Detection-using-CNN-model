@@ -12,38 +12,12 @@ import io
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-#@st.cache_resource
-def load_model_from_drive():
-    # Replace these variables with your own values
-    SERVICE_ACCOUNT_FILE = 'peerless-dahlia-385616-ba2dd85ba63a.json'
-    FILE_ID = 'marble_surface_model_final_1.h5'
+import urllib.request
 
-    # Authenticate with the service account
-    credentials = service_account.Credentials.from_service_account_file(
-            SERVICE_ACCOUNT_FILE, scopes=['https://www.googleapis.com/auth/drive.readonly'])
+url = 'https://github.com/pymedphys/data/releases/download/model01/marble_surface_model_final.h5'
+filename = url.split('/')[-1]
 
-    # Build the Drive API client
-    service = build('drive', 'v3', credentials=credentials)
-    try:
-        # Retrieve the file from Google Drive
-        request = service.files().get_media(fileId=FILE_ID)
-        file = io.BytesIO()
-        downloader = MediaIoBaseDownload(file, request)
-        done = False
-        while done is False:
-            status, done = downloader.next_chunk()
-            print(f'Download {int(status.progress() * 100)}.')
-
-        # Load the model from the downloaded file
-        file.seek(0)
-        model = load_model(file)
-
-        return model
-    except HttpError as error:
-        print(f'An error occurred: {error}')
-
-# Load the model using the cached function
-model = load_model_from_drive()
+urllib.request.urlretrieve(url, filename)
     
     
     
