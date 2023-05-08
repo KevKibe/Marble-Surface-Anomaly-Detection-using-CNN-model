@@ -3,9 +3,6 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.preprocessing import image
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaIoBaseDownload
 from keras.models import load_model
 
@@ -16,24 +13,36 @@ from googleapiclient.errors import HttpError
 
 @st.cache(show_spinner=False)
 def load_model_from_drive():
-    # Authenticate and authorize the Google Drive API credentials
-    creds = Credentials.from_authorized_user_file('client_secret_319221524567-811a8cv6h4reiu4umgd8c3j7jno4im08.apps.googleusercontent.com.json', ['https://www.googleapis.com/auth/drive'])
+    # Replace these variables with your own values
+    SERVICE_ACCOUNT_FILE = 'service.json'
+    FILE_ID = 'marble_surface_model_final_1.h5'
 
-    # Create a connection to your Google Drive account using the authenticated credentials
-    service = build('drive', 'v3', credentials=creds)
+    # Authenticate with the service account
+    credentials = service_account.Credentials.from_service_account_file(
+            SERVICE_ACCOUNT_FILE, scopes=['https://www.googleapis.com/auth/drive.readonly'])
 
-    # Fetch the model file from the Google Drive
-    file_id = 'marble_surface_model_final_1.h5'
-    request = service.files().get_media(fileId=file_id)
-    file = request.execute()
+    # Build the Drive API client
+    service = build('drive', 'v3', credentials=credentials)
+    try:
+        # Retrieve the file from Google Drive
+        request = service.files().get_media(fileId=FILE_ID)
+        file = io.BytesIO()
+        downloader = MediaIoBaseDownload(file, request)
+        done = False
+        while done is False:
+            status, done = downloader.next_chunk()
+            print(f'Download {int(status.progress() * 100)}.')
 
-    # Load the model from the fetched file using pickle
-    model = pickle.loads(file)
+        # Load the model from the downloaded file
+        file.seek(0)
+        model = load_model(file)
 
-    return model
+        return model
+    except HttpError as error:
+        print(f'An error occurred: {error}')
 
 # Load the model using the cached function
-model = load_model_from_drive()  
+model = load_model_from_drive()
     
     
     
