@@ -3,14 +3,9 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.preprocessing import image
-from googleapiclient.http import MediaIoBaseDownload
 from keras.models import load_model
 
-import pickle
-from google.oauth2 import service_account
-import io
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
+
 
 import urllib.request
 
