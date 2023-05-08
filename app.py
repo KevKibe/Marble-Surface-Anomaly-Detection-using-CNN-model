@@ -9,7 +9,7 @@ from keras.models import load_model
 
 import urllib.request
 
-@st.cache
+@st.cache_resource
 def load_model():
     url = 'https://github.com/KevKibe/Marble-Surface-Anomaly-Detection-using-CNN-model/releases/download/model01/marble_surface_model_final_1.h5'
     filename = url.split('/')[-1]
