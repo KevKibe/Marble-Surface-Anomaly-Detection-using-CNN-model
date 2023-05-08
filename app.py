@@ -12,7 +12,7 @@ import io
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-@st.cache_resource
+#@st.cache_resource
 def load_model_from_drive():
     # Replace these variables with your own values
     SERVICE_ACCOUNT_FILE = 'peerless-dahlia-385616-867972ed865b.json'
