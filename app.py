@@ -7,14 +7,15 @@ from googleapiclient.http import MediaIoBaseDownload
 from keras.models import load_model
 
 import pickle
-from google.oauth2.credentials import Credentials
+from google.oauth2 import service_account
+import io
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 @st.cache(show_spinner=False)
 def load_model_from_drive():
     # Replace these variables with your own values
-    SERVICE_ACCOUNT_FILE = 'service.json'
+    SERVICE_ACCOUNT_FILE = 'peerless-dahlia-385616-867972ed865b.json'
     FILE_ID = 'marble_surface_model_final_1.h5'
 
     # Authenticate with the service account
