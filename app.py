@@ -11,7 +11,7 @@ import urllib.request
 
 @st.cache_resource
 def load_model():
-    url = 'https://github.com/KevKibe/Marble-Surface-Anomaly-Detection-using-CNN-model/releases/download/model01/marble_surface_model_final_1.h5'
+    url = 'https://github.com/KevKibe/Marble-Surface-Anomaly-Detection-using-CNN-model/releases/download/model01/marble_surface_model_fin.h5'
     filename = url.split('/')[-1]
     urllib.request.urlretrieve(url, filename)
     model = keras.models.load_model(filename)
