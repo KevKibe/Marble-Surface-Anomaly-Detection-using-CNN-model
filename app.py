@@ -4,7 +4,7 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.preprocessing import image
 from keras.models import load_model
-
+from PIL import Image
 
 
 import urllib.request
@@ -21,6 +21,7 @@ model = load_model()
     
     
 def predict(image):
+    img = Image.open(image)
     img = keras.preprocessing.image.load_img(image, target_size=(224, 224))
     img_array = keras.preprocessing.image.img_to_array(img)
     img_array = tf.expand_dims(img_array, 0)
