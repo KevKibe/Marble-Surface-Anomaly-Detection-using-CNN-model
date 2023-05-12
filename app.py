@@ -9,7 +9,7 @@ from PIL import Image
 
 import urllib.request
 
-@st.cache_resource
+#@st.cache_resource
 def load_model():
     url = 'https://github.com/KevKibe/Marble-Surface-Anomaly-Detection-using-CNN-model/releases/download/model01/marble_surface_model_fin.h5'
     filename = url.split('/')[-1]
