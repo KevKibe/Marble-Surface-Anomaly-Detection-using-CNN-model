@@ -9,7 +9,7 @@ from PIL import Image
 
 import urllib.request
 
-
+@st.cache_resource
 model = load_model('model/marble_surface_modelfin (1).h5')  
 class_names=['crack','dot','good','joint']
 
@@ -31,7 +31,7 @@ st.title("Marble Surface Anomaly Detection")
 # Create a file uploader widget in Streamlit
 st.write("Upload an image of a marble surface")
 image = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
-if uploaded_file is not None:
+if image is not None:
     # Read the image
     img = Image.open(uploaded_file)
     st.image(img, caption="Uploaded Image", use_column_width=True)
