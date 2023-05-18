@@ -13,15 +13,19 @@ import urllib.request
 model = load_model('model/marble_surface_modelfin (1).h5')  
 class_names=['crack','dot','good','joint']
 
-def preprocess_image(image):
-    img = image.resize((48, 48))  
+def preprocess_image(image, target_size):
+    # Resize and normalize the image
+    img = image.resize(target_size)
     img = image.img_to_array(img)
     img = np.expand_dims(img, axis=0)
-    img = img / 255.0  
+    img = img / 255.0  # Normalize the image
     return img
-    
+
 def predict(image):
-    img = preprocess_image(image)
+    # Preprocess the image
+    img = preprocess_image(image, target_size=(48, 48))
+    
+    # Make prediction
     predictions = model.predict(img)
     predicted_class_index = np.argmax(predictions[0])
     predicted_class_name = class_names[predicted_class_index]
