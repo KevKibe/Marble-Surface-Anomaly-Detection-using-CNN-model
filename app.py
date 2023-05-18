@@ -11,7 +11,7 @@ import urllib.request
 
 model = load_model('model/marble_surface_modelfin (1).h5')  
 class_names=['crack','dot','good','joint']
-
+target_size=(48,48)
 def preprocess_image(image, target_size):
     # Resize and normalize the image
     img = image.resize(target_size)
