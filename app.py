@@ -10,7 +10,7 @@ from PIL import Image
 import urllib.request
 
 @st.cache_resource
-model = tf.keras.models.load_model('model/lstm_model_4.h5')  
+model = tf.keras.models.load_model('model/marble_surface_modelfin (1).h5')  
 class_names=['crack','dot','good','joint']
 
 def preprocess_image(image):
