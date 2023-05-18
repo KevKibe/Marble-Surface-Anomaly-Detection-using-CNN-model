@@ -11,7 +11,7 @@ from PIL import Image
 
 
 
-model = load_model('model/marble_surface_modelfin (1).h5')  
+model =  tf.keras.models.load_model('model/marble_surface_modelfin (1).h5')  
 
 class_names=['crack','dot','good','joint']
 target_size=(48,48)
