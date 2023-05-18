@@ -33,7 +33,7 @@ st.write("Upload an image of a marble surface")
 image = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 if image is not None:
     # Read the image
-    img = Image.open(uploaded_file)
+    img = Image.open(image)
     st.image(img, caption="Uploaded Image", use_column_width=True)
     prediction = predict(img)
     st.write("Prediction:", prediction)
