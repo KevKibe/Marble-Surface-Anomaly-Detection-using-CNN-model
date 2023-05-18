@@ -14,7 +14,7 @@ model = load_model('model/marble_surface_modelfin (1).h5')
 class_names=['crack','dot','good','joint']
 
 def preprocess_image(image):
-    img = image.resize((224, 224))  
+    img = image.resize((48, 48))  
     img = image.img_to_array(img)
     img = np.expand_dims(img, axis=0)
     img = img / 255.0  
