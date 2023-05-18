@@ -9,7 +9,7 @@ from PIL import Image
 
 import urllib.request
 
-@st.cache_resource
+
 model = load_model('model/marble_surface_modelfin (1).h5')  
 class_names=['crack','dot','good','joint']
 
