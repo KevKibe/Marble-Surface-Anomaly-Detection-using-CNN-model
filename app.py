@@ -10,32 +10,30 @@ from PIL import Image
 import urllib.request
 
 @st.cache_resource
-def load_model():
-    url = 'https://github.com/KevKibe/Marble-Surface-Anomaly-Detection-using-CNN-model/releases/download/model01/marble_surface_model_fin.h5'
-    filename = url.split('/')[-1]
-    urllib.request.urlretrieve(url, filename)
-    model = keras.models.load_model(filename)
-    return model
+model = tf.keras.models.load_model('model/lstm_model_4.h5')  
+class_names=['crack','dot','good','joint']
 
-model = load_model()   
-    
+def preprocess_image(image):
+    img = image.resize((224, 224))  
+    img = image.img_to_array(img)
+    img = np.expand_dims(img, axis=0)
+    img = img / 255.0  
+    return img
     
 def predict(image):
-    img = Image.open(image)
-    img = keras.preprocessing.image.load_img(image, target_size=(224, 224))
-    img_array = keras.preprocessing.image.img_to_array(img)
-    img_array = tf.expand_dims(img_array, 0)
-    prediction = model.predict(img_array)
-    score = tf.nn.sigmoid(prediction).numpy()[0][0]
-    return score
+    img = preprocess_image(image)
+    predictions = model.predict(img)
+    predicted_class_index = np.argmax(predictions[0])
+    predicted_class_name = class_names[predicted_class_index]
+    return predicted_class_name
 
 st.title("Marble Surface Anomaly Detection")
 # Create a file uploader widget in Streamlit
 st.write("Upload an image of a marble surface")
 image = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
-if image is not None:
-   score = predict(image)
-   if score > 0.5:
-      st.write("The marble surface is cracked with a probability of {}".format(score))
-   else:
-      st.write("The marble surface is not cracked with a probability of {}".format(1 - score))
+if uploaded_file is not None:
+    # Read the image
+    img = Image.open(uploaded_file)
+    st.image(img, caption="Uploaded Image", use_column_width=True)
+    prediction = predict(img)
+    st.write("Prediction:", prediction)
