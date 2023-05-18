@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-import tensorflow as tf
+import tensorflow 
 from tensorflow import keras
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.preprocessing.image import img_to_array
@@ -11,7 +11,7 @@ from PIL import Image
 
 
 
-model =  tf.keras.models.load_model('model/marble_surface_modelfin (1).h5', compile=False)  
+model =  tensorflow.keras.models.load_model('model/marble_surface_modelfin (1).h5', compile=False)  
 
 class_names=['crack','dot','good','joint']
 target_size=(48,48)
