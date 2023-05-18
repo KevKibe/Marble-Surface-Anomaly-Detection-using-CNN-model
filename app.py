@@ -3,7 +3,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 #from tensorflow.keras.preprocessing.image import image
-from keras.utils.image_utils import img_to_array
+from tensorflow.keras.preprocessing.image import img_to_array
 import keras.preprocessing.image
 from keras.models import load_model
 from PIL import Image
