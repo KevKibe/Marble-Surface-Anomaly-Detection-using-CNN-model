@@ -7,24 +7,21 @@ from tensorflow.keras.preprocessing.image import img_to_array
 from keras.models import load_model
 from PIL import Image
 
+model = keras.models.load_model('model/marble_surface_modelfin (1).h5', compile=False)
+class_names = ['crack', 'dot', 'good', 'joint']
+target_size = (48, 48)
 
-
-
-model = keras.models.load_model('model/marble_surface_modelfin (1).h5', compile=False)  
-
-class_names=['crack','dot','good','joint']
-target_size=(48,48)
 def preprocess_image(image, target_size):
     # Resize and normalize the image
     img = image.resize(target_size)
-    img = image.img_to_array(img)
+    img = img_to_array(img)
     img = np.expand_dims(img, axis=0)
     img = img / 255.0  # Normalize the image
     return img
 
 def predict(image):
     # Preprocess the image
-    img = preprocess_image(image, target_size=(48, 48))
+    img = preprocess_image(image, target_size)
     
     # Make prediction
     predictions = model.predict(img)
