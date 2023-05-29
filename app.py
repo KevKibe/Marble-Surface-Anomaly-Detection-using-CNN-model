@@ -6,9 +6,16 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.preprocessing.image import img_to_array
 from keras.models import load_model
 from PIL import Image
+import pickle
 
-model = keras.models.load_model('model/marble_surface_modelfin (1).h5', compile=False)
-class_names = ['crack', 'dot', 'good', 'joint']
+
+def load_model():
+    with open('marble_class_model.pkl', 'rb') as file:
+        model = pickle.load(file)
+    return model
+model=load_model()
+
+class_names = ['defect','good']
 target_size = (48, 48)
 
 def preprocess_image(image, target_size):
