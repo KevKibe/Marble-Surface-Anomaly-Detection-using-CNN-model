@@ -10,7 +10,7 @@ import pickle
 
 
 def load_model():
-    with open('marble_class_model.pkl', 'rb') as file:
+    with open('model/marble_class_model.pkl', 'rb') as file:
         model = pickle.load(file)
     return model
 model=load_model()
