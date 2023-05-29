@@ -6,14 +6,10 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.preprocessing.image import img_to_array
 from keras.models import load_model
 from PIL import Image
-import pickle
 
 
-def load_model():
-    with open('model/marble_class_model.pkl', 'rb') as file:
-        model = pickle.load(file)
-    return model
-model=load_model()
+model = tf.keras.models.load_model('model/marble_class_model.h5')
+
 
 class_names = ['defect','good']
 target_size = (48, 48)
