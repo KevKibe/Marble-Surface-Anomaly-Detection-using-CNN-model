@@ -10,7 +10,7 @@ from PIL import Image
 
 
 
-model =  tensorflow.keras.models.load_model('model/marble_surface_modelfin (1).h5', compile=False)  
+model = keras.models.load_model('model/marble_surface_modelfin (1).h5', compile=False)  
 
 class_names=['crack','dot','good','joint']
 target_size=(48,48)
