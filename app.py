@@ -8,7 +8,7 @@ from keras.models import load_model
 from PIL import Image
 
 
-model = tf.keras.models.load_model('model/marble_class_model.h5')
+model = tf.keras.models.load_model('model/marble_class_model.h5', compile=False)
 
 
 class_names = ['defect','good']
