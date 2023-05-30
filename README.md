@@ -8,10 +8,6 @@ The developed CNN model provides an efficient solution for identifying anomalies
 The current implementation serves as a solid foundation, but there are opportunities for enhancement:
 <li>Increasing the diversity and quantity of the training data through techniques like image rotation, scaling, and flipping can potentially improve the model's performance.
 <li>Further optimizations can be explored to adapt the model for specific embedded systems, ensuring efficient inference on devices with limited resources.
-
-# Demo
-![image](https://github.com/KevKibe/Marble-Surface-Anomaly-Detection-using-CNN-model/assets/86055894/46242812-1a20-4c71-84be-77c9063ebccb)
-
 # Usage
 <li>Upload an image of a marble surface using the provided file uploader in this link https://kevkibe-marble-surface-anomaly-detection-using-cnn-m-app-sesrxd.streamlit.app/.
 <li>View the uploaded image and the corresponding prediction of its classification.
