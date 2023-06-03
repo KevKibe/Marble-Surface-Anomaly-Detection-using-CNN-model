@@ -1,5 +1,5 @@
 # Problem Statement
-This project addresses a multi-class classification task in computer vision, where the goal is to classify images of marble surfaces into four categories: good, joint, cracked, or with dots.<br> The purpose of this classification is to enable quality control in industries involved in manufacturing marble tops.  
+This project addresses a multi-class classification task in computer vision, where the goal is to classify images of marble surfaces into two categories: good or defective.<br> The purpose of this classification is to enable quality control in industries involved in manufacturing marble tops.  
 
 ## Usage
 Upload an image of a marble surface using the provided file uploader in this [Link](https://kevkibe-marble-surface-anomaly-detection-using-cnn-m-app-sesrxd.streamlit.app/)<br>
