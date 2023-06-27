@@ -1,8 +1,8 @@
 # Problem Statement
 This project addresses a multi-class classification task in computer vision, where the goal is to classify images of marble surfaces into two categories: good or defective.<br> The purpose of this classification is to enable quality control in industries involved in manufacturing marble tops.  
 
-##Training
-I trained the model using a traditional CNN model which resulted in a 88% accuracy on the validation dataset and a resnet9 CNN model which resulted in an accuracy of 92% on the validation dataset.
+## Training
+The model waas trained using a traditional CNN model architecture which had an accuracy of 88% on the validation dataset and a Resnet9 CNN model architecture which had an accuracy of 92% on the validation dataset
 ## Usage
 Upload an image of a marble surface using the provided file uploader in this [Link](https://kevkibe-marble-surface-anomaly-detection-using-cnn-m-app-sesrxd.streamlit.app/)<br>
 View the uploaded image and the corresponding prediction of its classification.
